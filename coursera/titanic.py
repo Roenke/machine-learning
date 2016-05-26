@@ -1,20 +1,5 @@
-# The first thing to do is to import the relevant packages
-# that I will need for my script,
-# these include the Numpy (for maths and arrays)
-# and csv for reading and writing csv files
-# If i want to use something from this I need to call
-# csv.[function] or np.[function] first
+import pandas as pd
 
-import csv
-import numpy as np
+data = pd.read_csv('../data/titanic.csv', index_col='PassengerId')
 
-data = list()
-with open('../csv/train.csv', newline='') as csvfile:
-    reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-    next(reader)
-    for row in reader:
-        data.append(row)
-
-data = np.array(data)
-
-print(data)
+print(data.describe())
